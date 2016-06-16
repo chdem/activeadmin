@@ -24,7 +24,7 @@ module ActiveAdmin
             root namespace.root_to_options.merge(to: namespace.root_to)
           else
             namespace namespace.name do
-              root namespace.root_to_options.merge(to: namespace.root_to, as: :root)
+              root namespace.root_to_options.merge(to: namespace.root_to)
             end
           end
         end
@@ -88,6 +88,7 @@ module ActiveAdmin
             collection do
               config.collection_actions.each &build_action
               post :batch_action if config.batch_actions_enabled?
+              get :batch_action_form_view if config.batch_actions_enabled?
             end
           end
         when ::ActiveAdmin::Page

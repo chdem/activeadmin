@@ -56,7 +56,6 @@ ActiveAdmin.start_dialog = (html, callback) ->
     open: (event, ui) ->
       $('body').trigger 'modal_dialog:after_open', [form]
     dialogClass: 'active_admin_dialog'
-    width:'700px'
     buttons:
       OK: ->
         callback $(@).serializeObject()

@@ -6,7 +6,7 @@
 }
 
 .ui-dialog {
-  width: 700px;
+  width: 700px !important;
   position: fixed;
   z-index: 1002;
   @include section-background;

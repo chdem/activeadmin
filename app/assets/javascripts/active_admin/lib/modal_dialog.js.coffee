@@ -55,6 +55,17 @@ ActiveAdmin.start_dialog = (html, callback) ->
     modal: true
     open: (event, ui) ->
       $('body').trigger 'modal_dialog:after_open', [form]
+       if $.ui and $.ui.dialog and !$.ui.dialog::_allowInteractionRemapped and $(this).closest('.ui-dialog').length
+          if $.ui.dialog::_allowInteraction
+
+            $.ui.dialog::_allowInteraction = (e) ->
+              if $(e.target).closest('.select2-drop').length
+                return true
+              ui_dialog_interaction.apply this, arguments
+
+            $.ui.dialog::_allowInteractionRemapped = true
+          else
+            $.error 'You must upgrade jQuery UI or else.'
     dialogClass: 'active_admin_dialog'
     buttons:
       OK: ->
